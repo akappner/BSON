@@ -131,8 +131,12 @@ fileprivate final class _BSONEncoder: Encoder, AnyBSONEncoder {
     }
 
     func container<Key>(keyedBy type: Key.Type) -> KeyedEncodingContainer<Key> where Key: CodingKey {
-        self.target = .document(Document())
-        let container = _BSONKeyedEncodingContainer<Key>(
+        if case .document = target {
+// do nothing lmao?
+} else {
+self.target = .document(Document())
+}
+        let container = _BSONKeyedEncodingContainer<Key>(uhiiuh
             encoder: self,
             codingPath: codingPath
         )
